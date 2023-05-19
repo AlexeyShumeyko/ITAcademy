@@ -1,24 +1,17 @@
 ﻿List<decimal> conversionMoney = new List<decimal>();
-Dictionary<int, double> valueCollectionMemory = new Dictionary<int, double>();
 
-var request = new CurrencyExchangeRequest(Currency.USD, Currency.RUB, 30.60M, valueCollectionMemory);
-conversionMoney.Add(request.ConvertCurrency(request));
+var convertCurrency = new ConvertCurrency();
 
-var request2 = new CurrencyExchangeRequest(Currency.BYN, Currency.RUB, 679, valueCollectionMemory);
-conversionMoney.Add(request2.ConvertCurrency(request2));
+var request = new CurrencyRequest(CurrencyRequest.Currency.USD, CurrencyRequest.Currency.RUB, 30.60M);
+conversionMoney.Add(convertCurrency.Convert(request));
 
-var request3 = new CurrencyExchangeRequest(Currency.USD, Currency.RUB, 30.60M, valueCollectionMemory);
-conversionMoney.Add(request3.ConvertCurrency(request3));
+request = new CurrencyRequest(CurrencyRequest.Currency.RUB, CurrencyRequest.Currency.USD, 679);
+conversionMoney.Add(convertCurrency.Convert(request));
 
-var request4 = new CurrencyExchangeRequest(Currency.BYN, Currency.RUB, 679, valueCollectionMemory);
-conversionMoney.Add(request4.ConvertCurrency(request4));
+request = new CurrencyRequest(CurrencyRequest.Currency.USD, CurrencyRequest.Currency.RUB, 30.60M);
+conversionMoney.Add(convertCurrency.Convert(request));
+
+request = new CurrencyRequest(CurrencyRequest.Currency.RUB, CurrencyRequest.Currency.USD, 679);
+conversionMoney.Add(convertCurrency.Convert(request));
 
 Console.WriteLine(string.Join(" ", conversionMoney));
-
-public enum Currency
-{
-    BYN = 21,
-    RUB = 45,
-    EUR = 34,
-    USD = 38
-}
