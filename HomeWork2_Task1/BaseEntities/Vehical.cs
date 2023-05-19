@@ -7,6 +7,7 @@
     public TimeSpan Acceleration { get; set; }
 
     public abstract void Move();
+
     public override string ToString()
     {
         return $"Weight: {Weight} \nLong: {Long} \nHeight: {Height} \nMax Speed: {SpeedMax} \nAcceleration: {Acceleration}";

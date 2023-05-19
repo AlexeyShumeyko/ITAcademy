@@ -13,6 +13,7 @@
 
         return newArray;
     }
+
     public static int[,] GhangeArrayDimension(this int[] inputArray, int dimension) // Перегрузка для задания "С"
     {
         int width = (int)Math.Ceiling((double)inputArray.Length / dimension);
@@ -26,6 +27,7 @@
                     break;
                 newArray[i, j] = inputArray[count];
             }
+
         return newArray;
     }
 }
