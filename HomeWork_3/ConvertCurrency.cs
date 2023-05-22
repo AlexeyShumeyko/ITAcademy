@@ -1,10 +1,12 @@
 ﻿public class ConvertCurrency
 {
     private Dictionary<(CurrencyRequest.Currency From, CurrencyRequest.Currency To), decimal> ValueCollectionMemory { get; set; }
+
     public ConvertCurrency()
     {
         ValueCollectionMemory = new Dictionary<(CurrencyRequest.Currency From, CurrencyRequest.Currency To), decimal>();
     }
+
     public decimal Convert(CurrencyRequest request)
     {
 
@@ -23,6 +25,7 @@
             return rate * request.Amount;
         }
     }
+
     private decimal GetRandomValue()
     {
         var randomValue = new Random();
