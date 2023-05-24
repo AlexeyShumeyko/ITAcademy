@@ -22,9 +22,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_3", "HomeWork_3\HomeWork_3.csproj", "{8E98ED9E-47BF-4ACB-9C11-8651178BE170}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HomeWork_4", "HomeWork_4", "{F8F570C3-127A-4470-A7B4-5A75A67E57A6}"
-	ProjectSection(SolutionItems) = preProject
-		README.txt = README.txt
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork_4", "HomeWork_4\HomeWork_4.csproj", "{F4B4C242-496F-4FE4-81DA-2E437F48D5B8}"
 EndProject

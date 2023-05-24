@@ -4,6 +4,6 @@
 
     public virtual string Move()
     {
-        return "Транспорт движется";
+        return "Транспорт передвигается";
     }
 }
