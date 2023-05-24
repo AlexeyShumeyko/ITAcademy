@@ -1,6 +1,6 @@
 ﻿public class Person : IMovable
 {
-    private Transport _Transport { get; set; }
+    private Transport _Transport { get; }
 
     public Person()
     {

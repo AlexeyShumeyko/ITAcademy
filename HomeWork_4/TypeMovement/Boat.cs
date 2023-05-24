@@ -1,4 +1,4 @@
-﻿public class Boat : Transport, IMovable
+﻿public class Boat : Transport
 {
     public override string Move()
     {

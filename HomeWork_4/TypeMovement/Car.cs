@@ -1,4 +1,4 @@
-﻿public class Car : Transport,IMovable
+﻿public class Car : Transport
 {
     public override string Move()
     {
