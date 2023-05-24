@@ -6,7 +6,6 @@ GetMoveInfo(transport);
 
 var human = new Person(transport);
 GetMoveInfo(human);
-human.Move();
 
 
 static void GetMoveInfo(IMovable movable)
