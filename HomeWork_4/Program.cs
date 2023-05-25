@@ -8,7 +8,7 @@ var human = new Person(transport);
 GetMoveInfo(human);
 
 
-static void GetMoveInfo(IMovable movable)
+static void GetMoveInfo<T>(T movable) where T : IMovable
 {
     Console.WriteLine(movable.Move());
 }
