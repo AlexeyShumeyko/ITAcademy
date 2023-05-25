@@ -1,5 +1,18 @@
 ﻿using System.Text;
 
+// Task4
+
+var myStack = new MyStack<int>();
+myStack.Push(2);
+myStack.Push(4);
+myStack.Push(5);
+myStack.Push(9);
+
+var value = myStack.Pop();
+value = myStack.Pop();
+value = myStack.Pop();
+
+
 // Task1
 
 int[,,] mas = { { { 1, 2 },{ 3, 4 } },
@@ -66,7 +79,7 @@ public static class DateExtension
 {
     static string dateTime1 (this DateTime dateTime)
     {
-        dateTime.GetDateTimeFormats("")
+        dateTime.GetDateTimeFormats();
         return "";
     }
 }
