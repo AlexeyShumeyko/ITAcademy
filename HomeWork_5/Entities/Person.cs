@@ -1,13 +1,8 @@
-﻿public class Person
+﻿public class Person : Entities
 {
-    private int Id { get; set; }
     private string Name { get; set; }
-    public int Age { get; set; }
+    private int Age { get; set; }
 
-    public Person()
-    {
-
-    }
     public Person(int id)
     {
         Id = id;

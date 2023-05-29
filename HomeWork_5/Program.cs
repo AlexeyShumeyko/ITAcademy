@@ -1,94 +1,68 @@
-﻿var RepositoryPerson = new Repository<Person>();
+﻿var repositoryPerson = new Repository<Person>();
 
-var person1 = new Person();
-var person2 = new Person(23);
+var person1 = new Person(12, "vcbcv", 26);
+var person2 = new Person(23, "derfc", 18);
 var person3 = new Person(45, "Alexey", 20);
-var person4 = new Person();
+var person4 = new Person(23, "vbbnb", 37);
 
-RepositoryPerson.Add(person1);
-RepositoryPerson.Add(person2);
+repositoryPerson.Add(person1);
+repositoryPerson.Add(person2);
+repositoryPerson.Add(person3);
+
+person1 = new Person(35, "sadsdf", 22);
+
+repositoryPerson.Add(person1);
+try
+{
+    repositoryPerson.Add(person4);
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+    repositoryPerson.Update(person4);
+}
+
+repositoryPerson.Delete(person3);
+repositoryPerson.Delete(person3);
 
 try
 {
-    RepositoryPerson.Delete(person3); // Object not found
+    repositoryPerson.GetById(0);
 }
 catch (NullReferenceException ex)
 {
     Console.WriteLine(ex.Message);
 }
 
-RepositoryPerson.Delete(person1); // Removal successful
+repositoryPerson.GetById(person2.Id);
 
-try
-{
-    RepositoryPerson.GetById(5); 
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-RepositoryPerson.GetById(0); // person1
-
-RepositoryPerson.Add(person3);
-
-person3.Age = 23;
-RepositoryPerson.Update(person3) ;
-
-try
-{
-    RepositoryPerson.Update(person4); // not found
-}
-catch (NullReferenceException ex)
-{
-    Console.WriteLine(ex.Message);
-}
 
 var listPerson = new List<Person>();
-listPerson = RepositoryPerson.GetAll();
+listPerson = repositoryPerson.GetAll();
 
 // Product
 
-var RepositoryProduct = new Repository<Product>();
+var repositoryProduct = new Repository<Product>();
 
-var product1 = new Product();
-var product2 = new Product();
-var product3 = new Product();
+var product1 = new Product(12, "dfdf");
+var product2 = new Product(15, "bnmvbn");
 
-RepositoryProduct.Add(product1);
-RepositoryProduct.Add(product2);
+repositoryProduct.Add(product1);
+repositoryProduct.Add(product2);
+
+var list = new List<Product>();
+list = repositoryProduct.GetAll();
+
+product1 = new Product(12, "zxzx");
 
 try
 {
-    RepositoryProduct.Delete(product3); // Object not found
+    repositoryProduct.Add(product1);
 }
-catch (NullReferenceException ex)
+catch (ArgumentException ex)
 {
     Console.WriteLine(ex.Message);
+    repositoryProduct.Update(product1);
 }
 
-RepositoryProduct.Delete(product2); // Removal successful
-
-try
-{
-    RepositoryProduct.GetById(2);
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-try
-{
-    RepositoryProduct.Update(product3);
-}
-catch (NullReferenceException ex)
-{
-    Console.WriteLine(ex);
-}
-
-var listProduct = new List<Product>();
-listProduct = RepositoryProduct.GetAll();
-
-RepositoryProduct.Add(product2);
-RepositoryProduct.Delete(product2);
+Console.WriteLine(String.Join("", list));

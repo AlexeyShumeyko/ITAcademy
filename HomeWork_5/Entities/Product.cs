@@ -1,12 +1,7 @@
-﻿public class Product
+﻿public class Product : Entities
 {
-    private int Id { get; set; }
     private string Name { get; set; }
 
-    public Product()
-    {
-
-    }
     public Product(int id)
     {
         Id = id;
