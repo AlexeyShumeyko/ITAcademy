@@ -1,13 +1,10 @@
 ﻿public class Product : Entities
 {
-    private string Name { get; set; }
+    public string Name { get; set; }
 
-    public Product(int id)
-    {
-        Id = id;
-    }
-    public Product(int id, string name) : this(id)
+    public Product(int id, string name)
     {
         Name = name;
+        Id = id;
     }
 }

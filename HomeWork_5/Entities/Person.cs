@@ -1,15 +1,12 @@
 ﻿public class Person : Entities
 {
-    private string Name { get; set; }
-    private int Age { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-    public Person(int id)
-    {
-        Id = id;
-    }
-    public Person(int id, string name, int age) : this(id)
+    public Person(int id, string name, int age)
     {
         Name = name;
         Age = age;
+        Id = id;
     }
 }
