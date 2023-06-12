@@ -2,24 +2,19 @@
 
 public class FileSystemHandler
 {
-    private string _pathToFile = "";
-    private readonly string _fileName = "entities.json";
-
-    private void СreateFile()
+    private void СreateFile(string fileLocation)
     {
-        File.Create(_pathToFile).Close();
+        File.Create(fileLocation).Close(); //
     }
 
-    public Dictionary<int,T> GetInfoFromFile<T>(string fileLocation) where T : Entities
+    public Dictionary<int, T> GetInfoFromFile<T>(string fileLocation)
     {
-        _pathToFile = Path.Combine(fileLocation, _fileName);
+        if (!File.Exists(fileLocation))
+            СreateFile(fileLocation);
 
-        if (!File.Exists(_pathToFile)) 
-            throw new FileNotFoundException("File Not Found");
+        string jsonString = File.ReadAllText(fileLocation);
 
-        string jsonString = File.ReadAllText(_pathToFile);
-
-        var dictionaryObj = new Dictionary<int,T>();
+        var dictionaryObj = new Dictionary<int, T>();
 
         try
         {
@@ -33,19 +28,17 @@ public class FileSystemHandler
         return dictionaryObj;
     }
 
-    public void SaveDataToFile<T>(Dictionary<int, T> entities, string fileLocation) where T : Entities
+    public void SaveDataToFile<T>(Dictionary<int, T> entities, string fileLocation)
     {
-        _pathToFile = Path.Combine(fileLocation, _fileName);
-
-        if (!File.Exists(_pathToFile))
-            СreateFile();
+        if (!File.Exists(fileLocation))
+            СreateFile(fileLocation);
 
         try
         {
             string jsonString = JsonSerializer.Serialize(entities);
-            File.WriteAllText(_pathToFile, jsonString);
+            File.WriteAllText(fileLocation, jsonString);
         }
-        catch(JsonException ex)
+        catch (JsonException ex)
         {
             Console.WriteLine(ex);
         }

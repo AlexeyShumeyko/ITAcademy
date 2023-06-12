@@ -1,8 +1,8 @@
 ﻿public class Repository<T> : IRepository<T> where T : Entities
 {
-    private Dictionary<int, T> _entities = new Dictionary<int, T>();
+    private static Dictionary<int, T> _entities = new Dictionary<int, T>();
     private FileSystemHandler _fileSystemHandler = new FileSystemHandler();
-    private readonly string _fileLocation = "C:\\Users\\KAIZEN\\source\\repos";  // Знаю, что нужно делать через конфиг, а не readonly. Но я не понял как :)
+    private readonly string _fileLocation = $"{typeof(T)}.json";
 
     public void Add(T entity)
     {

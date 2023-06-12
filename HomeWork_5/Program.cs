@@ -1,12 +1,14 @@
 ﻿var repositoryPerson = new Repository<Person>();
+var repositoryPerson2 = new Repository<Person>();
 
 var person1 = new Person(12, "vcbcv", 26);
 var person2 = new Person(23, "derfc", 18);
 var person3 = new Person(45, "Alexey", 20);
 var person4 = new Person(23, "vbbnb", 37);
 
+
 repositoryPerson.Add(person1);
-repositoryPerson.Add(person2);
+repositoryPerson2.Add(person2);
 repositoryPerson.Add(person3);
 
 person1 = new Person(35, "sadsdf", 22);
