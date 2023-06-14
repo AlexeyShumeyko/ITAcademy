@@ -9,12 +9,15 @@ public class FileSystemHandler
 
     public Dictionary<int, T> GetInfoFromFile<T>(string fileLocation)
     {
+        var dictionaryObj = new Dictionary<int, T>();
+
         if (!File.Exists(fileLocation))
             СreateFile(fileLocation);
 
         string jsonString = File.ReadAllText(fileLocation);
 
-        var dictionaryObj = new Dictionary<int, T>();
+        if(jsonString == String.Empty)
+            return dictionaryObj;
 
         try
         {
