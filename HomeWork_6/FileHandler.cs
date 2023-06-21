@@ -1,10 +1,13 @@
 ﻿public class FileHandler
 {
     private int _totalCountWord = 0;
-    private object _lock = new object();
+    private object _locker = new object();
 
     public Task WordCountTextThread (string pathToDirectory)
     {
+        int minWorker, minIOC;
+        minWorker = minIOC = Environment.ProcessorCount;
+
         var fileList = Directory.GetFiles(pathToDirectory);
         if (fileList.Length == 0)
         {
@@ -13,6 +16,11 @@
         }
 
         Task[] tasks = new Task[fileList.Length];
+
+        if (ThreadPool.SetMinThreads(minWorker, minIOC))
+        {
+            Console.WriteLine("The minimum number of threads was set successfully.");
+        }
 
         int indexFile = 0;
 
@@ -28,21 +36,28 @@
 
     private void WordCountText(string path)
     {
-        string allText;
+        int countWordsFile = 0;
 
         var fileInfo = new FileInfo(path);
 
         using (StreamReader sr = new StreamReader(path))
         {
-            allText = sr.ReadToEnd();
+            string? line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                int countWord = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+                lock (_locker)
+                {
+                    countWordsFile += countWord;
+                }
+            }
         }
 
-        int countWords = allText.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
-
-        lock (_lock)
+        lock (_locker)
         {
-            Console.WriteLine($"\nFile {fileInfo.Name} has finished counting words : {countWords}");
-            _totalCountWord += countWords;
+            Console.WriteLine($"\nFile {fileInfo.Name} has finished counting words : {countWordsFile}");
+            _totalCountWord += countWordsFile;
             Console.WriteLine($"The total sum of words at the moment is : {_totalCountWord}\n");
         }
     }
